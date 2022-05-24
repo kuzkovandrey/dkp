@@ -1,0 +1,1 @@
+export { PdfServiceConfig } from "./PdfServiceConfig";

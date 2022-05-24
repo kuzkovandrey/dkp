@@ -1,25 +1,18 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { createContext } from "react";
+import { PdfService } from "./services/PdfService";
+import { AppRoutes } from "./components/AppRoutes/AppRoutes";
+import { Routes } from "./values/routes";
+import "./App.scss";
+
+export const PdfServiceContext = createContext<PdfService | null>(null);
 
 function App() {
+  const pdfService: PdfService = new PdfService();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <PdfServiceContext.Provider value={pdfService}>
+      <AppRoutes routes={Routes}></AppRoutes>
+    </PdfServiceContext.Provider>
   );
 }
 
