@@ -1,6 +1,6 @@
 import { TextAlignment } from "pdf-lib";
 
-export interface PdfServiceConfig {
+export interface PdfTemplateConfig {
   fontPath: string;
   fontSize: number;
   align: TextAlignment;

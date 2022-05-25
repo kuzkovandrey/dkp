@@ -1,3 +1,5 @@
+import { FormFieldNames } from "../../values";
+
 export interface CertificateFields {
   certificate_serial: string;
   certificate_number: number;
@@ -6,8 +8,19 @@ export interface CertificateFields {
 }
 
 export interface Certificate {
-  serial: string;
-  number: number;
-  issuedBy: string;
-  issuedDate: string;
+  [FormFieldNames.SERIAL]: string;
+  [FormFieldNames.NUMBER]: number;
+  [FormFieldNames.ISSUES_BY]: string;
+  [FormFieldNames.ISSUES_DATE]: string;
+}
+
+export class CertificateMapper {
+  public static map(certificate: Certificate): CertificateFields {
+    return {
+      certificate_serial: certificate.serial,
+      certificate_number: certificate.number,
+      certificate_issued_by: certificate.issuedBy,
+      certificate_issued_date: certificate.issuedDate,
+    };
+  }
 }

@@ -1,7 +1,9 @@
+import { FormFieldNames } from "../../values";
+
 export interface OfterDetailsFields {
-  details: string;
+  [FormFieldNames.DETAILS]: string;
 }
 
 export interface OfterDetails {
-  details: string;
+  [FormFieldNames.DETAILS]: string;
 }

@@ -1,1 +1,1 @@
-export { PdfServiceConfig } from "./PdfServiceConfig";
+export { PdfTemplateConfig } from "./PdfTemplateConfig";

@@ -1,2 +1,1 @@
-export { AppRoutes } from "./AppRoutes";
-export { AppRoutesProps } from "./AppRoutesProps";
+export * from "./AppRoutes";

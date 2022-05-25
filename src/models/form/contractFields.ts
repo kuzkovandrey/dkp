@@ -3,9 +3,9 @@ import { CarFields } from "./car";
 import { CertificateFields } from "./certificate";
 import { OfterDetailsFields } from "./otherDetails";
 import { PaymentFields } from "./payment";
-import { SalemanFields } from "./salesman";
+import { SalesmanFields } from "./salesman";
 
-export type ContractFields = SalemanFields &
+export type ContractFields = SalesmanFields &
   CarFields &
   BuyerFields &
   CertificateFields &

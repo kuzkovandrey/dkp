@@ -1,3 +1,4 @@
+import { FormFieldNames } from "./../../values/formFieldNames";
 export interface CarFields {
   car_name: string;
   car_model: string;
@@ -9,11 +10,25 @@ export interface CarFields {
 }
 
 export interface Car {
-  name: string;
-  model: string;
-  year: number;
-  stateNumber: string;
-  bodyNumber: string;
-  cost: number;
-  costText: string;
+  [FormFieldNames.NAME]: string;
+  [FormFieldNames.MODEL]: string;
+  [FormFieldNames.CAR_YEAR]: number;
+  [FormFieldNames.STATE_NUMBER]: string;
+  [FormFieldNames.BODY_NUMBER]: string;
+  [FormFieldNames.COST_NUMBER]: number;
+  [FormFieldNames.COST_TEXT]: string;
+}
+
+export class CarMapper {
+  public static map(car: Car): CarFields {
+    return {
+      car_name: car.name,
+      car_model: car.model,
+      car_year: car.carYear,
+      car_state_number: car.stateNumber,
+      car_body_number: car.bodyNumber,
+      car_cost_number: car.costNumber,
+      car_cost_text: car.costText,
+    };
+  }
 }

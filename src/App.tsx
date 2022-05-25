@@ -1,18 +1,18 @@
 import React, { createContext } from "react";
-import { PdfService } from "./services/PdfService";
+import { PdfTemplate } from "./utils/PdfTemplate";
 import { AppRoutes } from "./components/AppRoutes/AppRoutes";
 import { Routes } from "./values/routes";
 import "./App.scss";
 
-export const PdfServiceContext = createContext<PdfService | null>(null);
+const pdfTemplate: PdfTemplate = new PdfTemplate();
+
+export const PdfTemplateContext = createContext<PdfTemplate>(pdfTemplate);
 
 function App() {
-  const pdfService: PdfService = new PdfService();
-
   return (
-    <PdfServiceContext.Provider value={pdfService}>
+    <PdfTemplateContext.Provider value={pdfTemplate}>
       <AppRoutes routes={Routes}></AppRoutes>
-    </PdfServiceContext.Provider>
+    </PdfTemplateContext.Provider>
   );
 }
 

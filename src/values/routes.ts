@@ -1,6 +1,8 @@
 import React from "react";
 import { Onboarding } from "../pages/Onboarding/Onboarding";
 import { Greeting } from "../pages/Greeting/Greeting";
+import { RoutePaths } from "./routePaths";
+import { Preview } from "../pages/Preview/Preview";
 
 export type RouteType = {
   path: string;
@@ -9,15 +11,19 @@ export type RouteType = {
 
 export const Routes: RouteType[] = [
   {
-    path: "/",
+    path: RoutePaths.ROOT,
     component: Greeting,
   },
   {
-    path: "/onboarding",
+    path: RoutePaths.ONBOARDING,
     component: Onboarding,
   },
   {
-    path: "*",
+    path: RoutePaths.NOT_MATCH,
     component: Greeting,
+  },
+  {
+    path: RoutePaths.PREVIEW,
+    component: Preview,
   },
 ];

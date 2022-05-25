@@ -2,11 +2,11 @@ import fontkit from "@pdf-lib/fontkit";
 import { PDFDocument, PDFFont, PDFForm, PDFTextField } from "pdf-lib";
 import { PdfLoader } from "./PdfLoader";
 import { FontLoader } from "./FontLoader";
-import { PdfServiceConfig } from "../models/PdfServiceConfig";
-import { PdfServiceDefaultConfig } from "../config/PdfServiceDefaultConfig";
+import { PdfTemplateConfig } from "../models/PdfTemplateConfig";
+import { PdfTemplateDefaultConfig } from "../config/PdfTemplateDefaultConfig";
 
-export class PdfService {
-  private readonly config: PdfServiceConfig;
+export class PdfTemplate {
+  private readonly config: PdfTemplateConfig = PdfTemplateDefaultConfig;
 
   private pdfTemplate: PDFDocument;
 
@@ -14,13 +14,13 @@ export class PdfService {
 
   private font: PDFFont;
 
-  constructor(config: PdfServiceConfig = PdfServiceDefaultConfig) {
-    this.config = { ...this.config, ...config };
+  constructor(config?: PdfTemplateConfig) {
+    this.config = { ...this.config, ...(config || {}) };
 
     this.loadAndPreparePDFTemplate(this.config);
   }
 
-  private async loadAndPreparePDFTemplate(config: PdfServiceConfig) {
+  private async loadAndPreparePDFTemplate(config: PdfTemplateConfig) {
     const [template, pdfForm, font] = await PdfLoader.loadTemplate(
       config.pdfTemplatePath
     ).then((tmpl) => this.configurePDFTemplate(tmpl, config));
@@ -32,7 +32,7 @@ export class PdfService {
 
   private async configurePDFTemplate(
     template: PDFDocument,
-    { fontPath }: PdfServiceConfig
+    { fontPath }: PdfTemplateConfig
   ): Promise<[PDFDocument, PDFForm, PDFFont]> {
     const pdfForm: PDFForm = template.getForm();
     template.registerFontkit(fontkit);
@@ -44,7 +44,6 @@ export class PdfService {
 
   private getAndPrepareField(fieldName: string): PDFTextField {
     const field = this.pdfForm.getTextField(fieldName);
-
     field.setAlignment(this.config.align);
     field.setFontSize(this.config.fontSize);
 
@@ -52,16 +51,24 @@ export class PdfService {
   }
 
   setTextByField(fieldName: string, text: string) {
-    const field = this.getAndPrepareField(fieldName);
-
-    field.setText(text);
-    field.updateAppearances(this.font);
-    field.enableReadOnly();
+    try {
+      const field = this.getAndPrepareField(fieldName);
+      field.setText(text);
+      field.updateAppearances(this.font);
+    } catch (e) {
+      console.warn(e);
+    }
   }
 
   disableAllFields() {
-    this.pdfForm.getFields().forEach((fields) => {
-      fields.enableReadOnly();
+    this.pdfForm.getFields().forEach((field) => {
+      field.enableReadOnly();
+    });
+  }
+
+  clearAllFields() {
+    this.pdfForm.getFields().forEach((field) => {
+      this.setTextByField(field.getName(), "");
     });
   }
 

@@ -1,6 +1,10 @@
 import React, { FC } from "react";
-import { PageWrapperProps } from "./PageWrapperProps";
 import "./PageWrapperStyles.scss";
+
+export interface PageWrapperProps {
+  children: JSX.Element;
+  verticalAlign?: "center" | "end" | "start";
+}
 
 export const PageWrapper: FC<PageWrapperProps> = ({
   children,
