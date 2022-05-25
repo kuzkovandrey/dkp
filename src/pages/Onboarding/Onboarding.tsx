@@ -9,6 +9,7 @@ import "./Onboarding.scss";
 
 export const Onboarding: FC<{}> = () => {
   const pdfTemplate = useContext(PdfTemplateContext);
+
   pdfTemplate.setEditMode();
 
   return (
