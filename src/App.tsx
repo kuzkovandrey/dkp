@@ -1,12 +1,7 @@
-import React, { createContext } from "react";
-import { PdfTemplate } from "./utils/PdfTemplate";
+import React from "react";
 import { AppRoutes } from "./components/AppRoutes/AppRoutes";
-import { Routes } from "./values/routes";
+import { Routes, PdfTemplateContext, pdfTemplate } from "./values";
 import "./App.scss";
-
-const pdfTemplate: PdfTemplate = new PdfTemplate();
-
-export const PdfTemplateContext = createContext<PdfTemplate>(pdfTemplate);
 
 function App() {
   return (

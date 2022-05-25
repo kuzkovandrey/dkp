@@ -1,5 +1,5 @@
 import { TextAlignment } from "pdf-lib";
-import { FONT_PATH, PDF_TEMPLATE_PATH } from "@values";
+import { FONT_PATH, PDF_TEMPLATE_PATH } from "@values/consts";
 import { PdfTemplateConfig } from "@models";
 
 export const PdfTemplateDefaultConfig: PdfTemplateConfig = {

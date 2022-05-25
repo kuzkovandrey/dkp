@@ -1,6 +1,6 @@
-import react, { FC, useContext, useEffect, useRef } from "react";
+import React, { FC, useContext, useEffect, useRef } from "react";
+import { PdfTemplateContext } from "@values/pdfTemplateContext";
 import "./Preview.scss";
-import { PdfTemplateContext } from "../../App";
 
 export const Preview: FC = () => {
   const pdfTemplate = useContext(PdfTemplateContext);
@@ -8,8 +8,6 @@ export const Preview: FC = () => {
   const iframeRef = useRef<HTMLIFrameElement>(null);
 
   const saveAndViewPdf = async () => {
-    pdfTemplate.disableAllFields();
-
     if (iframeRef && iframeRef.current)
       iframeRef.current.src = await pdfTemplate.savePdfAsBase64();
   };
@@ -18,5 +16,5 @@ export const Preview: FC = () => {
     saveAndViewPdf();
   }, []);
 
-  return <iframe ref={iframeRef} className="preview" title="1"></iframe>;
+  return <iframe ref={iframeRef} className="preview" title="preview"></iframe>;
 };

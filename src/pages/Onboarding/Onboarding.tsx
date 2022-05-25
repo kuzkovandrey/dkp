@@ -1,17 +1,15 @@
-import React, { BaseSyntheticEvent, FC, useContext, useId } from "react";
+import React, { BaseSyntheticEvent, FC, useContext } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@mui/material";
 import Box from "@mui/material/Box";
 import { PageWrapper, FormBuilder } from "@components";
 import { FormValues } from "@configs";
-import { PdfTemplateContext } from "../../App";
+import { PdfTemplateContext, RoutePaths } from "@values";
 import "./Onboarding.scss";
-import { RoutePaths } from "@values";
 
 export const Onboarding: FC = () => {
   const pdfTemplate = useContext(PdfTemplateContext);
   pdfTemplate.clearAllFields();
-  const id = useId();
 
   return (
     <PageWrapper verticalAlign="start">
@@ -25,7 +23,7 @@ export const Onboarding: FC = () => {
         }}
       >
         {FormValues.map((form, index) => (
-          <FormBuilder key={id} form={form}></FormBuilder>
+          <FormBuilder key={`${index}-${form.title}`} form={form}></FormBuilder>
         ))}
 
         <Link to={RoutePaths.PREVIEW} style={{ textDecoration: "none" }}>

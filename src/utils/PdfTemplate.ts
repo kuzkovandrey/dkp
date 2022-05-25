@@ -28,6 +28,8 @@ export class PdfTemplate {
     this.pdfTemplate = template;
     this.pdfForm = pdfForm;
     this.font = font;
+
+    this.disableAllFields();
   }
 
   private async configurePDFTemplate(
