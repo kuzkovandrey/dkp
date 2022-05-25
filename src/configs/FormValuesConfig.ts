@@ -6,15 +6,18 @@ const Details: Form = {
   fields: [
     {
       name: PdfFields.PAYMENT_PERIOD,
-      placeholder: "Сроки оплаты",
+      label: "Сроки оплаты",
+      placeholder: "до 20.06.2022",
     },
     {
       name: PdfFields.PAYMENT_FORM,
-      placeholder: "Форма оплаты",
+      label: "Форма оплаты",
+      placeholder: "Наличные",
     },
     {
       name: PdfFields.DETAILS,
-      placeholder: "Иные условия договора",
+      label: "Иные условия",
+      placeholder: "Передать деньги после 19.00 по адресу...",
     },
   ],
 };
@@ -24,19 +27,23 @@ const Header: Form = {
   fields: [
     {
       name: PdfFields.CITY,
-      placeholder: "Город",
+      label: "Город",
+      placeholder: "Минск",
     },
     {
       name: PdfFields.DAY,
-      placeholder: "День",
+      label: "День",
+      placeholder: "20",
     },
     {
       name: PdfFields.MONTH,
-      placeholder: "Месяц",
+      label: "Месяц",
+      placeholder: "Июнь",
     },
     {
       name: PdfFields.YEAR,
-      placeholder: "Год (например - 22)",
+      label: "Год",
+      placeholder: "22",
     },
   ],
 };
@@ -46,15 +53,18 @@ const Buyer: Form = {
   fields: [
     {
       name: PdfFields.BUYER_NAME,
-      placeholder: "Ф.И.О.",
+      label: "Ф.И.О.",
+      placeholder: "Иванов Александр Дмитриевич",
     },
     {
       name: PdfFields.BUYER_ADDRESS,
-      placeholder: "Адрес прописки",
+      label: "Адрес проживания",
+      placeholder: "Минская обл., Минский р-н., п. Иванова, д. 31, кв. 34",
     },
     {
       name: PdfFields.BUYER_PASSPORT,
-      placeholder: "Серия, номер паспорта, кем выдан",
+      label: "Паспортные данные",
+      placeholder: "Серия, номер паспорта, кем и когда выдан",
     },
   ],
 };
@@ -64,15 +74,19 @@ const Salesman: Form = {
   fields: [
     {
       name: PdfFields.SALESMAN_NAME,
-      placeholder: "Ф.И.О.",
+      label: "Ф.И.О.",
+      placeholder: "Петров Андрей Александрович",
     },
     {
       name: PdfFields.SALESMAN_ADDRESS,
-      placeholder: "Адрес прописки",
+      label: "Адрес проживания",
+      placeholder:
+        "Могилевская обл., Могилевский р-н., д. Иванова, д. 33, кв. 33",
     },
     {
       name: PdfFields.SALESMAN_PASSPORT,
-      placeholder: "Серия, номер паспорта, кем выдан",
+      label: "Паспортные данные",
+      placeholder: "Серия, номер паспорта, кем и когда выдан",
     },
   ],
 };
@@ -82,47 +96,58 @@ const Transport: Form = {
   fields: [
     {
       name: PdfFields.CAR_NAME,
-      placeholder: "Вид транспортного средства (автомобиль, прицеп, мотоцикл)",
+      label: "Вид транспортного средства",
+      placeholder: "Автомобиль, прицеп, мотоцикл",
     },
     {
       name: PdfFields.CAR_MODEL,
-      placeholder: "Модель",
+      label: "Модель",
+      placeholder: "Peugeot 406",
     },
     {
       name: PdfFields.CAR_YEAR,
-      placeholder: "Год выпуска",
+      label: "Год выпуска",
+      placeholder: "1995",
     },
     {
       name: PdfFields.CAR_STATE_NUMBER,
-      placeholder: "Регистрационный знак",
+      label: "Регистрационный знак",
+      placeholder: "7575 KA-7",
     },
     {
       name: PdfFields.CAR_BODY_NUMBER,
-      placeholder: "Номер кузова, рамы, шасси",
+      label: "Номер кузова (рамы, шасси)",
+      placeholder: "HF346464300000AB23532",
     },
     {
       name: PdfFields.CERTIFICATE_SERIAL,
-      placeholder: "Серия свидетельства",
+      label: "Серия свидетельства",
+      placeholder: "AAO",
     },
     {
       name: PdfFields.CERTIFICATE_NUMBER,
-      placeholder: "Номер свидетельства",
+      label: "Номер свидетельства",
+      placeholder: "23457865356",
     },
     {
       name: PdfFields.CERTIFICATE_ISSUES_BY,
-      placeholder: "Кем выдано (наименование РЭП ГАИ)",
+      label: "Кем выдано свидетельство (наименование РЭП ГАИ)",
+      placeholder: "Минским РЭП ГАИ Минского района",
     },
     {
       name: PdfFields.CERTIFICATE_ISSUES_DATE,
-      placeholder: "Дата выдачи",
+      label: "Дата выдачи свидетельства",
+      placeholder: "20.10.2020 г",
     },
     {
       name: PdfFields.CAR_COST_NUMBER,
-      placeholder: "Стоимоть цифрами",
+      label: "Стоимоть цифрами (BYN)",
+      placeholder: "1597",
     },
     {
       name: PdfFields.CAR_COST_TEXT,
-      placeholder: "Стоимоть прописью",
+      label: "Стоимоть прописью",
+      placeholder: "Тысяча пятьсот девяносто семь",
     },
   ],
 };

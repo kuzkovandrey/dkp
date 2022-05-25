@@ -28,8 +28,6 @@ export class PdfTemplate {
     this.pdfTemplate = template;
     this.pdfForm = pdfForm;
     this.font = font;
-
-    this.disableAllFields();
   }
 
   private async configurePDFTemplate(
@@ -52,26 +50,41 @@ export class PdfTemplate {
     return field;
   }
 
+  private enableAllFields() {
+    this.pdfForm.getFields().forEach((field) => {
+      field.disableReadOnly();
+    });
+  }
+
+  private disableAllFields() {
+    this.pdfForm.getFields().forEach((field) => {
+      field.enableReadOnly();
+    });
+  }
+
+  private clearAllFields() {
+    this.pdfForm.getFields().forEach((field) => {
+      this.setTextByField(field.getName(), "");
+    });
+  }
+
   setTextByField(fieldName: string, text: string) {
     try {
       const field = this.getAndPrepareField(fieldName);
       field.setText(text);
       field.updateAppearances(this.font);
     } catch (e) {
-      console.warn(e);
+      console.log(e);
     }
   }
 
-  disableAllFields() {
-    this.pdfForm.getFields().forEach((field) => {
-      field.enableReadOnly();
-    });
+  setEditMode() {
+    this.clearAllFields();
+    this.enableAllFields();
   }
 
-  clearAllFields() {
-    this.pdfForm.getFields().forEach((field) => {
-      this.setTextByField(field.getName(), "");
-    });
+  setPreviewMode() {
+    this.disableAllFields();
   }
 
   async savePdfAsBase64(): Promise<string> {

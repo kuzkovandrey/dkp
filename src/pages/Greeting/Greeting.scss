@@ -1,0 +1,9 @@
+.greeting {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+
+  &__title {
+    margin-bottom: 15px !important;
+  }
+}

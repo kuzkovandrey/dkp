@@ -4,6 +4,7 @@ import "./Preview.scss";
 
 export const Preview: FC = () => {
   const pdfTemplate = useContext(PdfTemplateContext);
+  pdfTemplate.setPreviewMode();
 
   const iframeRef = useRef<HTMLIFrameElement>(null);
 

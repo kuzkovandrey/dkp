@@ -4,4 +4,13 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  &__button-link {
+    text-decoration: none;
+    margin: 2rem 0;
+
+    & > Button {
+      min-width: 350px;
+    }
+  }
 }

@@ -7,9 +7,9 @@ import { FormValues } from "@configs";
 import { PdfTemplateContext, RoutePaths } from "@values";
 import "./Onboarding.scss";
 
-export const Onboarding: FC = () => {
+export const Onboarding: FC<{}> = () => {
   const pdfTemplate = useContext(PdfTemplateContext);
-  pdfTemplate.clearAllFields();
+  pdfTemplate.setEditMode();
 
   return (
     <PageWrapper verticalAlign="start">
@@ -26,7 +26,7 @@ export const Onboarding: FC = () => {
           <FormBuilder key={`${index}-${form.title}`} form={form}></FormBuilder>
         ))}
 
-        <Link to={RoutePaths.PREVIEW} style={{ textDecoration: "none" }}>
+        <Link className="form__button-link" to={RoutePaths.PREVIEW}>
           <Button color="primary" variant="contained">
             Просмотр
           </Button>

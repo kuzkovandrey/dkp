@@ -16,13 +16,13 @@ export const FormBuilder: FC<FormBuilderProps> = ({ form }) => {
 
       {form.fields.map((field, index) => (
         <TextField
-          style={{ margin: "0.5rem 0" }}
           className="field"
           size="small"
+          variant="outlined"
           key={`${field.name}-${index}`}
           id={field.name}
-          label={field.placeholder}
-          variant="outlined"
+          label={field.label}
+          placeholder={field.placeholder}
           required={field.isRequired}
         />
       ))}

@@ -4,18 +4,13 @@ import { Typography } from "@mui/material";
 import { Button } from "@mui/material";
 import { PageWrapper } from "@components";
 import { RoutePaths } from "@values";
+import "./Greeting.scss";
 
 export const Greeting: FC<any> = () => {
   return (
     <PageWrapper>
       <div className="greeting">
-        <Typography
-          style={{ marginBottom: "15px" }}
-          className="greeting__title"
-          variant="h4"
-          component="h1"
-          align="center"
-        >
+        <Typography variant="h4" component="h1" className="greeting__title">
           Договор купли-продажи онлайн
         </Typography>
 
