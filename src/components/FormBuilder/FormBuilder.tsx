@@ -1,6 +1,6 @@
 import React, { FC, useId } from "react";
 import { Typography, TextField } from "@mui/material";
-import { Form } from "../../types/Form";
+import { Form } from "@types";
 import "./FormBuilder.scss";
 
 export interface FormBuilderProps {

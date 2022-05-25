@@ -1,6 +1,6 @@
 import React, { FC, useId } from "react";
 import { Routes, Route } from "react-router-dom";
-import { RouteType } from "../../values";
+import { RouteType } from "@values";
 
 export interface AppRoutesProps {
   routes: RouteType[];

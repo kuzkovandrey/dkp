@@ -1,4 +1,4 @@
-import { GenericForm, Form } from "../types";
+import { GenericForm, Form } from "@types";
 
 export const createFormObject = ({ fields }: Form): GenericForm => {
   const form: GenericForm = {};

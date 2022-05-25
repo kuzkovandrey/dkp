@@ -1,4 +1,5 @@
 export * from "./routes";
 export * from "./consts";
-export { FormFieldNames } from "./formFieldNames";
-export { PdfFields } from "./pdfFields";
+export * from "./formFieldNames";
+export * from "./pdfFields";
+export * from "./routePaths";

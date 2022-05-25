@@ -1,6 +1,6 @@
 import { TextAlignment } from "pdf-lib";
-import { FONT_PATH, PDF_TEMPLATE_PATH } from "../values";
-import { PdfTemplateConfig } from "../models";
+import { FONT_PATH, PDF_TEMPLATE_PATH } from "@values";
+import { PdfTemplateConfig } from "@models";
 
 export const PdfTemplateDefaultConfig: PdfTemplateConfig = {
   fontSize: 12,

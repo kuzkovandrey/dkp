@@ -1,8 +1,6 @@
 import React from "react";
-import { Onboarding } from "../pages/Onboarding/Onboarding";
-import { Greeting } from "../pages/Greeting/Greeting";
+import { Onboarding, Greeting, Preview } from "@pages";
 import { RoutePaths } from "./routePaths";
-import { Preview } from "../pages/Preview/Preview";
 
 export type RouteType = {
   path: string;

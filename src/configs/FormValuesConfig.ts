@@ -1,5 +1,5 @@
-import { PdfFields } from "./../values/pdfFields";
-import { Form } from "../types/Form";
+import { PdfFields } from "@values/pdfFields";
+import { Form } from "@types";
 
 const Details: Form = {
   title: "Другое",

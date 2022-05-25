@@ -16,13 +16,7 @@
     "isolatedModules": false,
     "noEmit": true,
     "jsx": "react-jsx"
-    // "baseUrl": ".",
-    // "paths": {
-    //   "@values/*": ["./src/values/*"],
-    //   "@values": ["./src/values"],
-    //   "@models/*": ["./src/models/*"],
-    //   "@models": ["./src/models"]
-    // }
   },
+  "extends": "./tsconfig.paths.json",
   "include": ["src"]
 }

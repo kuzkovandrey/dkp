@@ -2,8 +2,8 @@ import fontkit from "@pdf-lib/fontkit";
 import { PDFDocument, PDFFont, PDFForm, PDFTextField } from "pdf-lib";
 import { PdfLoader } from "./PdfLoader";
 import { FontLoader } from "./FontLoader";
-import { PdfTemplateConfig } from "../models/PdfTemplateConfig";
-import { PdfTemplateDefaultConfig } from "../config/PdfTemplateDefaultConfig";
+import { PdfTemplateConfig } from "@models";
+import { PdfTemplateDefaultConfig } from "@configs";
 
 export class PdfTemplate {
   private readonly config: PdfTemplateConfig = PdfTemplateDefaultConfig;
