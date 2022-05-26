@@ -4,6 +4,8 @@ import { Routes, PdfTemplateContext, pdfTemplate } from "./values";
 import "./App.scss";
 
 function App() {
+  const test = "test";
+
   return (
     <PdfTemplateContext.Provider value={pdfTemplate}>
       <AppRoutes routes={Routes}></AppRoutes>
