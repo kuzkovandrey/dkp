@@ -6,11 +6,16 @@ export class PersonUtil {
   }
 
   public static getShortName(fullName: string): string {
+    if (!fullName) return "";
+
     const [surname, name, patronymic] = fullName.split(" ");
 
-    return `${surname} ${this.createInitial(name)}. ${this.createInitial(
-      patronymic
-    )}.`;
+    if (surname && name && patronymic)
+      return `${surname} ${this.createInitial(name)}. ${this.createInitial(
+        patronymic
+      )}.`;
+
+    return "";
   }
 
   public static getPassportData(serial: string, number: number): string {

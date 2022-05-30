@@ -5,8 +5,6 @@ import "./Preview.scss";
 export const Preview: FC = () => {
   const pdfTemplate = useContext(PdfTemplateContext);
 
-  pdfTemplate.setPreviewMode();
-
   const iframeRef = useRef<HTMLIFrameElement>(null);
 
   const saveAndViewPdf = async () => {
@@ -16,6 +14,8 @@ export const Preview: FC = () => {
 
   useEffect(() => {
     saveAndViewPdf();
+
+    return () => pdfTemplate.clearAllFields();
   }, []);
 
   return <iframe ref={iframeRef} className="preview" title="preview"></iframe>;
