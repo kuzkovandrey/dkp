@@ -1,30 +1,43 @@
-import React, { BaseSyntheticEvent, FC, useContext } from "react";
+import React, { FC, useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@mui/material";
-import Box from "@mui/material/Box";
 import { PageWrapper, FormBuilder } from "@components";
 import { FormValues } from "@configs";
-import { PdfTemplateContext, RoutePaths } from "@values";
+import { PdfTemplateContext, RoutePaths, PdfFields } from "@values";
+import { GenericForm } from "@types";
+import { PersonUtil } from "@utils/PersonUtil";
 import "./Onboarding.scss";
 
 export const Onboarding: FC<{}> = () => {
   const pdfTemplate = useContext(PdfTemplateContext);
 
-  pdfTemplate.setEditMode();
+  const formFields: GenericForm = {};
+
+  const handleChanges = (fieldName: string, value: string | number) => {
+    formFields[fieldName] = value;
+  };
+
+  useEffect(() => {
+    return () => {
+      formFields[PdfFields.BUYER_NAME_SHORT] = PersonUtil.getShortName(
+        formFields[PdfFields.BUYER_NAME] as string
+      );
+      formFields[PdfFields.SALESMAN_NAME_SHORT] = PersonUtil.getShortName(
+        formFields[PdfFields.SALESMAN_NAME] as string
+      );
+      pdfTemplate.setFieldsByObject(formFields);
+    };
+  }, []);
 
   return (
     <PageWrapper verticalAlign="start">
-      <Box
-        className="form"
-        component="form"
-        noValidate
-        autoComplete="off"
-        onChange={({ target }: BaseSyntheticEvent) => {
-          pdfTemplate.setTextByField(target.id, target.value);
-        }}
-      >
+      <>
         {FormValues.map((form, index) => (
-          <FormBuilder key={`${index}-${form.title}`} form={form}></FormBuilder>
+          <FormBuilder
+            onChange={handleChanges}
+            key={`${index}-${form.title}`}
+            form={form}
+          ></FormBuilder>
         ))}
 
         <Link className="form__button-link" to={RoutePaths.PREVIEW}>
@@ -32,7 +45,7 @@ export const Onboarding: FC<{}> = () => {
             Просмотр
           </Button>
         </Link>
-      </Box>
+      </>
     </PageWrapper>
   );
 };

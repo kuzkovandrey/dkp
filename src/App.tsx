@@ -1,13 +1,13 @@
 import React from "react";
 import { AppRoutes } from "./components/AppRoutes/AppRoutes";
-import { Routes, PdfTemplateContext, pdfTemplate } from "./values";
+import { Routes, PdfTemplateProvider } from "./values";
 import "./App.scss";
 
 function App() {
   return (
-    <PdfTemplateContext.Provider value={pdfTemplate}>
+    <PdfTemplateProvider>
       <AppRoutes routes={Routes}></AppRoutes>
-    </PdfTemplateContext.Provider>
+    </PdfTemplateProvider>
   );
 }
 

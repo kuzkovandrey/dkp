@@ -1,3 +1,4 @@
+import { GenericForm } from "@types";
 import fontkit from "@pdf-lib/fontkit";
 import { PDFDocument, PDFFont, PDFForm, PDFTextField } from "pdf-lib";
 import { PdfLoader } from "./PdfLoader";
@@ -28,6 +29,8 @@ export class PdfTemplate {
     this.pdfTemplate = template;
     this.pdfForm = pdfForm;
     this.font = font;
+
+    this.disableAllFields();
   }
 
   private async configurePDFTemplate(
@@ -62,20 +65,26 @@ export class PdfTemplate {
     });
   }
 
-  private clearAllFields() {
+  clearAllFields() {
     this.pdfForm.getFields().forEach((field) => {
       this.setTextByField(field.getName(), "");
     });
   }
 
-  setTextByField(fieldName: string, text: string) {
+  setTextByField(fieldName: string, value: string | number) {
     try {
       const field = this.getAndPrepareField(fieldName);
-      field.setText(text);
+      field.setText(`${value}`);
       field.updateAppearances(this.font);
     } catch (e) {
       console.log(e);
     }
+  }
+
+  setFieldsByObject(formFields: GenericForm) {
+    Object.entries(formFields).forEach(([fieid, value]) => {
+      this.setTextByField(fieid, value);
+    });
   }
 
   setEditMode() {
