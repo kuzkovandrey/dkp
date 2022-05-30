@@ -1,6 +1,6 @@
 import React from "react";
 import { AppRoutes } from "./components/AppRoutes/AppRoutes";
-import { Routes, PdfTemplateProvider } from "./values";
+import { Routes, PdfTemplateProvider } from "@values";
 import "./App.scss";
 
 function App() {
@@ -12,3 +12,4 @@ function App() {
 }
 
 export default App;
+//test
